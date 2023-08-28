@@ -1,0 +1,29 @@
+Programa num maior
+
+maior := o
+Enquanto VERDADEIRO, faça:
+	le numero
+	se numero igual a 0, então
+		pare
+	se numero > maior, então
+		maior = numero
+Escreve maior
+
+
+Programa Cartas
+n1, n2 := 0
+classificação := ""
+
+Para cada i entre 1 e 5 faça:
+	Lê n2
+	Se n1 for igual a 0 
+		n1 = n2
+		continue
+	Se n2>n1 então,
+		se classificação ="" então
+			classificação = "C"
+		senão classificação = "D"
+			classificação = "N"
+	Fazer análogo para se n1>n2
+
+Escreve a classificação
