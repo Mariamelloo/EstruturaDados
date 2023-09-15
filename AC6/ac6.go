@@ -13,10 +13,10 @@ func main() {
 	insereOrd(&lista, &n, 4)
 	fmt.Println(lista)
 
-	insereOrd(&lista, &n, 12)
+	insereOrd(&lista, &n, 2)
 	fmt.Println(lista)
 
-	insereOrd(&lista, &n, 2)
+	insereOrd(&lista, &n, 12)
 	fmt.Println(lista)
 
 	insereOrd(&lista, &n, 6)
@@ -38,33 +38,22 @@ func insereOrd(v *[M]int, n *int, novoValor int) {
 		if confere_repeticao(v, *n, novoValor) == -1 {
 			fmt.Println("Tentando inserir ", novoValor)
 			fmt.Println(novoValor, "não encontrado, inserindo na lista")
-			acha_posicao(v, n, novoValor)
+			i := *n
+			for i > 0 && v[i-1] > novoValor {
+				v[i] = v[i-1]
+				i--
+			}
+			v[i] = novoValor
+			*n++
 		} else {
 			fmt.Println("O numero já se encontra na lista")
 		}
 	}
 }
 
-func acha_posicao(v *[M]int, n *int, novoValor int) {
-
-	i := 0
-	for i < *n && v[i] < novoValor {
-		i++
-	}
-
-	for j := *n; j > i; j-- {
-		v[j] = v[j-1]
-	}
-
-	v[i] = novoValor
-
-	*n++
-	return
-}
-
-func confere_repeticao(v *[M]int, n int, valor int) int {
+func confere_repeticao(v *[M]int, n int, x int) int {
 	for i := 0; i < n; i++ {
-		if v[i] == valor {
+		if v[i] == x {
 			return i
 		}
 	}
